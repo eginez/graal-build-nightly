@@ -1,0 +1,12 @@
+stages:
+    - build-graalvm-8
+    - build-graalvm-11
+
+build-graalvm-8:
+    script:
+        - ./build-graal.sh jdk8
+
+ 
+
+
+
