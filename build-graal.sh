@@ -34,14 +34,14 @@ git clone --depth=1 https://github.com/oracle/graal
 
 cd graal/vm
 echo "Git commit: `git rev-parse HEAD`"
-$commit=`git rev-parse --short HEAD`
+commit=`git rev-parse --short HEAD`
 mx clean
 mx build
 
 # Copy Graal SDK to new directory defined as artifact/cache
 echo "Copying Graal SDK to ${CI_PROJECT_DIR}/graal_dist..."
-tar cvfz ${CI_PROJECT_DIR}/graal/graalvm/latest_graalvm_home graal_$1_$commit
-#cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist_$1
 mkdir -p  $CI_PROJECT_DIR/graal_dist_$1
+tar cvfz $CI_PROJECT_DIR/graal/graalvm/latest_graalvm_home/ graal_$1_$commit
+#cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist_$1
 cp graal_$1_$commit $CI_PROJECT_DIR/graal_dist_$1
 
