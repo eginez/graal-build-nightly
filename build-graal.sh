@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 JDK_VERSION=$1
 
