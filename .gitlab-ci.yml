@@ -1,25 +1,18 @@
 stages:
     - build
-    - test
 
 build-graalvm-8:
     stage: build
+    artifacts:
+        paths:
+            - $CI_PROJECT_DIR/graal_dist_jdk8
     script:
         - ./build-graal.sh jdk8
-     artifacts:
-        paths:
-              - $CI_PROJECT_DIR/graal_dist_jdk8
+
 build-graalvm-11:
     stage: build
+    artifacts:
+        paths:
+            - $CI_PROJECT_DIR/graal_dist_jdk11
     script:
         - ./build-graal.sh jdk11
-     artifacts:
-        paths:
-              - $CI_PROJECT_DIR/graal_dist_jdk11
-         
-
-
- 
-
-
-
