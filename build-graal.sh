@@ -39,5 +39,5 @@ mx --disable-polyglot --disable-libpolyglot --dynamicimports /substratevm --skip
 
 # Copy Graal SDK to new directory defined as artifact/cache
 echo "Copying Graal SDK to ${CI_PROJECT_DIR}/graal_dist..."
-cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist
+cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist_$1
 
