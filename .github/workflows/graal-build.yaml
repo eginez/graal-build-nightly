@@ -14,3 +14,11 @@ jobs:
           with:
               name: graal-ce-jdk8
               path: dist/
+        - name: Build GraalVM jdk11
+          run: ./build-graal.sh jdk11
+        - name: Upload artifact jdk11
+          uses: actions/upload-artifact@v1.0.0
+          with:
+              name: graal-ce-jdk11
+              path: dist/
+       
