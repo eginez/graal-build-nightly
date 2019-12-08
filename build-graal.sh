@@ -26,6 +26,8 @@ else
     exit 1
 fi
 
+mkdir dist
+distpath=`pwd`/dist
 mkdir graal
 cd graal
 export PATH=$PWD/mx:$PATH
@@ -41,7 +43,6 @@ mx clean
 mx build
 
 # Copy Graal SDK to new directory defined as artifact/cache
-#echo "Copying Graal SDK to ${CI_PROJECT_DIR}/graal_dist..."
-#mkdir $CI_PROJECT_DIR/graal_dist
-#cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist/graal-ce-$os-$1-$commit
+echo "Copying Graal SDK to $distpath"
+cp -R latest_graalvm_home/ $distpath/graal-ce-$os-$1-$commit
 
