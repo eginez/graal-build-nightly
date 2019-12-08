@@ -1,6 +1,12 @@
 name: GraalVM-Snapshot
 
-on: [push]
+on:
+    schedule:
+        - cron: "0 7 * * *"
+    push:
+        branches:
+            - master
+
 
 jobs:
     build-jdk8:
