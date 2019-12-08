@@ -24,7 +24,7 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
             matrix:
-                os: [ubuntu-latest, mac-latest]
+                os: [ubuntu-latest, macos-latest]
         steps:
         - uses: actions/checkout@v1
         - name: Build GraalVM jdk11
