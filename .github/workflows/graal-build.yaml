@@ -4,15 +4,13 @@ on: [push]
 
 jobs:
     build:
-
         runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Build GraalVM jdk8
-      run: ./build-graal.sh jdk8
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-          name: graal-ce-jdk8
-          path: dist/
+        steps:
+        - uses: actions/checkout@v1
+        - name: Build GraalVM jdk8
+          run: ./build-graal.sh jdk8
+        - name: Upload artifact
+          uses: actions/upload-artifact@v1.0.0
+          with:
+              name: graal-ce-jdk8
+              path: dist/
