@@ -3,7 +3,7 @@ name: GraalVM-Snapshot
 on: [push]
 
 jobs:
-    build:
+    build-jdk8:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v1
@@ -14,9 +14,13 @@ jobs:
           with:
               name: graal-ce-jdk8
               path: dist/
+    build-jdk11:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v1
         - name: Build GraalVM jdk11
           run: ./build-graal.sh jdk11
-        - name: Upload artifact jdk11
+        - name: Upload artifact
           uses: actions/upload-artifact@v1.0.0
           with:
               name: graal-ce-jdk11
