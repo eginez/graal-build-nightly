@@ -1,4 +1,5 @@
 #! /bin/bash
+set -x
 
 JDK_VERSION=$1
 
@@ -6,14 +7,14 @@ jdk8() {
     echo "Building GraalVM for JDK 8"
     wget -q https://github.com/graalvm/openjdk8-jvmci-builder/releases/download/jvmci-19.3-b04/openjdk-8u232-jvmci-19.3-b04-linux-amd64.tar.gz
     tar zxf openjdk-8u232-jvmci-19.3-b04-linux-amd64.tar.gz
-    export JAVA_HOME=${CI_PROJECT_DIR}/openjdk1.8.0_232-jvmci-19.3-b04
+    export JAVA_HOME=`pwd`/openjdk1.8.0_232-jvmci-19.3-b04
 }
 
 jdk11() {
     echo "Building GraalVM for JDK 11"
     wget -q https://github.com/graalvm/labs-openjdk-11/releases/download/jvmci-19.3-b05/labsjdk-ce-11.0.5+10-jvmci-19.3-b05-linux-amd64.tar.gz
     tar zxf labsjdk-ce-11.0.5+10-jvmci-19.3-b05-linux-amd64.tar.gz
-    export JAVA_HOME=${CI_PROJECT_DIR}/labsjdk-ce-11.0.5-jvmci-19.3-b05
+    export JAVA_HOME=`pwd`/labsjdk-ce-11.0.5-jvmci-19.3-b05
 }
 
 if [ "${JDK_VERSION}" == "jdk8" ]; then
@@ -40,7 +41,7 @@ mx clean
 mx build
 
 # Copy Graal SDK to new directory defined as artifact/cache
-echo "Copying Graal SDK to ${CI_PROJECT_DIR}/graal_dist..."
-mkdir $CI_PROJECT_DIR/graal_dist
-cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist/graal-ce-$os-$1-$commit
+#echo "Copying Graal SDK to ${CI_PROJECT_DIR}/graal_dist..."
+#mkdir $CI_PROJECT_DIR/graal_dist
+#cp -R $CI_PROJECT_DIR/graal/graal/vm/latest_graalvm_home/ $CI_PROJECT_DIR/graal_dist/graal-ce-$os-$1-$commit
 
